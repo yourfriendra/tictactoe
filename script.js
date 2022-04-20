@@ -1,52 +1,50 @@
+//creating array for RPS choices
+const RPSOPTIONS = ["rock","paper","scissors"]
 
-// Create integer variable for rock
-let rock = 1
-// Create integer variable for paper
-let paper = 2
-// Create integer variable for scissors
-let scissors = 3
-
-function computerPlay (
-// Generate random whole number between 1 and 3 and assign it to variable compChoice
-Math.floor(Math.random() * 3 + 1);
-)
-
-let computerSelection = computerPlay()
-
-console.log(computerSelection);
-
-// prompt user to input rock paper or scissors and create variable
-let userChoice = prompt("Choose your fighter", "Rock, Paper or Scissors?");
-
-//check if misspelled or blank
-if (userChoice == null || userChoice == "") {
-   // notify and redo if spelled wrong or blank
-    console.log("Reload and Enter a Choice");
+function computerPlay () {
+// Generate random whole number between 1 and 3 and use to choose from the option array
+return (RPSOPTIONS [Math.floor(Math.random() * 3 + 1)])
 }
 
-console.log(rock)
+//assign the result from the copmputer play function to computerSelection variable 
+let computerSelection = computerPlay()
 
-console.log(userChoice);
-// make rule to compare answer to the variable computer choice
+console.log( "Computer Chose: " + computerSelection);
+
+// prompt user to input rock paper or scissors and create variable
+let initialChoice = prompt("Choose your fighter", "Rock, Paper or Scissors?");
+
+//convert user input to be case insensitive
+let userChoice = initialChoice.toLowerCase();
+
+//print to check -_-
+console.log("You Chose: " + userChoice);
+
+//check to see if input is valid choice from the choice array
+if (RPSOPTIONS.indexOf(userChoice) === -1) {
+    alert("Enter Valid Choice")
+}
+//check if misspelled or blank
+else if (userChoice == null || userChoice == "") {
+   // notify and redo if spelled wrong or blank
+    alert("RELOAD AND ENTER A CHOICE")
+}
+
+// make function to compare answer to the variable computer choice
+function playRound() {
+
+if (userChoice == computerSelection ) {
+    return "Its a Tie";
+}
+else if ( (userChoice == "paper" && computerSelection == "scissors") || (userChoice == "scissors" && computerSelection == "rock") || (userChoice == "rock" && computerSelection == "paper")) {
+        return "You Win";
+}
+else {
+    return "You Lose"
+}
+}
 
 
-/* if user answer is rock
-    computer choice of 1 returns tie or
-    computer choice of 2 returns lose or
-    computer choice of 3 returns win
-*/
-//or
-/* if user answer is paper
-    computer choice of 2 returns tie or
-    computer choice of 3 returns lose or
-    computer choice of 1 returns win
-*/
-//or
-/* if user answer is scissors
-    computer choice of 3 returns tie or
-    computer choice of 1 returns lose or
-    computer choice of 2 returns win
-*/
 
 
 // print computer choice
